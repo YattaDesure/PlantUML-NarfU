@@ -1,0 +1,31 @@
+@startuml
+
+
+actor "Клиент" as Customer
+actor "Кассир" as Cashier
+actor "Администратор" as Admin
+
+  (Покупка товара) as Buy
+  (Просмотр товаров) as Show
+  (Проверка возраста) as Check
+  (Принятие оплаты) as Pay
+  (Добавление товаров) as Add
+  (Удаление товара) as Remove
+  (Управление сотрудниками)  as Control
+
+
+
+Customer --> Buy
+Customer --> Show
+Cashier --> Check
+Cashier --> Pay
+Admin --> Add
+Admin --> Remove
+Admin --> Control
+
+Buy .> Check : "проверка возраста"
+:Сотрудник магазина: <|-- Admin
+:Сотрудник магазина: <|-- Cashier
+
+
+@enduml
