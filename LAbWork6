@@ -1,0 +1,145 @@
+@startuml
+
+start
+if (Подключиться к базе данных?) then (yes)
+    :создать курсор;
+    :создать пустой список;
+else (no)
+    stop
+endif
+
+split
+    while (select "сотрудник" from workers) is (not empty)
+        :добавить сотрудника в список;
+    endwhile (empty)
+    :закрыть подключение к базе данных;
+    :вернуть список сотрудников;
+
+split again
+    while (select "сотрудник" from workers) is (not empty)
+        :просмотреть сотрудника в списке;
+    endwhile (empty)
+    :закрыть подключение к базе данных;
+    :вернуть список сотрудников;
+
+split again
+    while (select "сотрудник" from workers) is (not empty)
+        :изменить сотрудника в списке;
+    endwhile (empty)
+    :закрыть подключение к базе данных;
+    :вернуть список сотрудников;
+
+split again
+    while (select "сотрудник" from workers) is (not empty)
+        :удалить сотрудника из списка;
+    endwhile (empty)
+    :закрыть подключение к базе данных;
+    :вернуть список сотрудников;
+end split
+
+start
+if (Подключиться к базе данных?) then (yes)
+    :создать курсор;
+    :создать пустой список;
+else (no)
+    stop
+endif
+
+split
+    while (select "пользователи" from client) is (not empty)
+        :добавить пользователя в список;
+    endwhile (empty)
+    :закрыть подключение к базе данных;
+    :вернуть список пользователей;
+
+split again
+    while (select "пользователи" from client) is (not empty)
+        :просмотреть пользователя в списке;
+    endwhile (empty)
+    :закрыть подключение к базе данных;
+    :вернуть список пользователей;
+
+split again
+    while (select "пользователи" from client) is (not empty)
+        :изменить пользователя в списке;
+    endwhile (empty)
+    :закрыть подключение к базе данных;
+    :вернуть список пользователей;
+
+split again
+    while (select "пользователи" from client) is (not empty)
+        :удалить пользователя из списка;
+    endwhile (empty)
+    :закрыть подключение к базе данных;
+    :вернуть список пользователей;
+end split
+
+start
+if (Подключиться к базе данных?) then (yes)
+    :создать курсор;
+    :создать пустой список;
+else (no)
+    stop
+endif
+
+split
+    while (select "товары" from products) is (not empty)
+        :добавить товар в список;
+    endwhile (empty)
+    :закрыть подключение к базе данных;
+    :вернуть список товаров;
+
+split again
+    while (select "товары" from products) is (not empty)
+        :просмотреть товар в списке;
+    endwhile (empty)
+    :закрыть подключение к базе данных;
+    :вернуть список товаров;
+
+split again
+    while (select "товары" from products) is (not empty)
+        :изменить товар в списке;
+    endwhile (empty)
+    :закрыть подключение к базе данных;
+    :вернуть список товаров;
+
+split again
+    while (select "товары" from products) is (not empty)
+        :удалить товар из списка;
+    endwhile (empty)
+    :закрыть подключение к базе данных;
+    :вернуть список товаров;
+end split
+
+start
+if (Подключиться к базе данных?) then (yes)
+    :создать курсор;
+    :создать пустой список;
+else (no)
+    stop
+endif
+
+split
+    while (select * from operations where type='Покупка товара') is (not empty)
+        :зарезервировать товар;
+    endwhile (empty)
+    :закрыть подключение к базе данных;
+    :вернуть список операций;
+
+split again
+    while (select * from operations where type='Покупка товара') is (not empty)
+        :просмотреть товар;
+    endwhile (empty)
+    :закрыть подключение к базе данных;
+    :вернуть список операций;
+
+split again
+    while (select * from operations where type='Покупка товара') is (not empty)
+        :заказать товар;
+    endwhile (empty)
+    :закрыть подключение к базе данных;
+    :вернуть список операций;
+end split
+
+stop
+@enduml
