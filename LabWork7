@@ -1,0 +1,39 @@
+@startuml
+
+[Консольное приложение] as app
+[База данных SQLite] as db
+
+app --> db : SQL запросы
+
+component app {
+    [User Interface] as ui
+    [Business Logic] as logic
+    [Data Models] as models
+}
+
+component db {
+    [Таблица Товары]
+    [Таблица Клиенты]
+    [Таблица Продажи]
+}
+
+ui --> logic : вызывает
+logic --> models : использует
+models --> db : сохраняет данные
+
+@enduml
+
+@startuml
+
+node "Рабочий компьютер" {
+    component "Python приложение" as pyapp
+    database "SQLite" as sqlite
+    folder "Конфиги" {
+        [settings.ini]
+    }
+}
+
+pyapp --> sqlite : читает/записывает
+pyapp --> "Конфиги" : загружает настройки
+
+@enduml
