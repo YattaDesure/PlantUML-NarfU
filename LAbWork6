@@ -9,7 +9,7 @@ else (no)
 endif
 
 split
-    while (select "сотрудник" from workers) is (not empty)
+    while (insert into "сотрудник" from workers) is (not empty)
         :добавить сотрудника в список;
     endwhile (empty)
     :закрыть подключение к базе данных;
@@ -23,14 +23,14 @@ split again
     :вернуть список сотрудников;
 
 split again
-    while (select "сотрудник" from workers) is (not empty)
+    while (update "сотрудник" from workers) is (not empty)
         :изменить сотрудника в списке;
     endwhile (empty)
     :закрыть подключение к базе данных;
     :вернуть список сотрудников;
 
 split again
-    while (select "сотрудник" from workers) is (not empty)
+    while (delete "сотрудник" from workers) is (not empty)
         :удалить сотрудника из списка;
     endwhile (empty)
     :закрыть подключение к базе данных;
@@ -46,7 +46,7 @@ else (no)
 endif
 
 split
-    while (select "пользователи" from client) is (not empty)
+    while (insert into "пользователи" from client) is (not empty)
         :добавить пользователя в список;
     endwhile (empty)
     :закрыть подключение к базе данных;
@@ -60,14 +60,14 @@ split again
     :вернуть список пользователей;
 
 split again
-    while (select "пользователи" from client) is (not empty)
+    while (update "пользователи" from client) is (not empty)
         :изменить пользователя в списке;
     endwhile (empty)
     :закрыть подключение к базе данных;
     :вернуть список пользователей;
 
 split again
-    while (select "пользователи" from client) is (not empty)
+    while (delete "пользователи" from client) is (not empty)
         :удалить пользователя из списка;
     endwhile (empty)
     :закрыть подключение к базе данных;
@@ -83,7 +83,7 @@ else (no)
 endif
 
 split
-    while (select "товары" from products) is (not empty)
+    while (insert into "товары" from products) is (not empty)
         :добавить товар в список;
     endwhile (empty)
     :закрыть подключение к базе данных;
@@ -97,14 +97,14 @@ split again
     :вернуть список товаров;
 
 split again
-    while (select "товары" from products) is (not empty)
+    while (update "товары" from products) is (not empty)
         :изменить товар в списке;
     endwhile (empty)
     :закрыть подключение к базе данных;
     :вернуть список товаров;
 
 split again
-    while (select "товары" from products) is (not empty)
+    while (delete "товары" from products) is (not empty)
         :удалить товар из списка;
     endwhile (empty)
     :закрыть подключение к базе данных;
