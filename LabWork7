@@ -1,39 +1,41 @@
-@startuml
+left to right direction
 
-[Консольное приложение] as app
-[База данных SQLite] as db
+[Приложение]
+[База данных]
 
-app --> db : SQL запросы
+[Приложение] -> Сотрудник : use
+[Приложение] -> Пользователь : use
+[Приложение] -> Товары : use
+[Приложение] -> Покупка_товара : use
 
-component app {
-    [User Interface] as ui
-    [Business Logic] as logic
-    [Data Models] as models
-}
-
-component db {
-    [Таблица Товары]
-    [Таблица Клиенты]
-    [Таблица Продажи]
-}
-
-ui --> logic : вызывает
-logic --> models : использует
-models --> db : сохраняет данные
-
+Сотрудник - [База данных]
+Пользователь - [База данных]
+Товары - [База данных]
+Покупка_товара - [База данных]
 @enduml
-
 @startuml
-
-node "Рабочий компьютер" {
-    component "Python приложение" as pyapp
-    database "SQLite" as sqlite
-    folder "Конфиги" {
-        [settings.ini]
+node  "Сервер баз данных" as dbs {
+component [База данных]
+}
+node "Рабочая станция" as ws {
+component [Приложение]
+component Приложение{
+artifact controller.py 
+artifact view.py
+artifact model.py
+artifact client.py
+artifact workers.py
+artifact products.py
+artifact operations.py
+artifact app
+controller.py <-- app
+view.py <-- app
+model.py<-- app
+client.py<-- app
+workers.py<-- app
+products.py<-- app
+operations.py<-- app
     }
 }
-
-pyapp --> sqlite : читает/записывает
-pyapp --> "Конфиги" : загружает настройки
-
+dbs -- ws
 @enduml
